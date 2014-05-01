@@ -16,34 +16,69 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/bootstrap.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
-        <div class="row">
-
-            <div class="jumbotron">
-                <div class="container">
-                    <h1>Hello, world!</h1>
-                    <p>...</p>
-                    <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+        <!-- Add your site or application content here -->
+        <div class="container">
+            <div class="row">
+                <div clas="col-md-12">
+                    <div class=" text-center page-header">
+                        <h1>Arquitectura de Computadoras <small>Calculadora</small></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">                
+                <div class="col-md-5">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Sistema</label>
+                            <div class="col-sm-10">
+                                <select id="tipo_ope" class="form-control" name="tipo_operacion">
+                                    <option value="binario" selected="true">Binario</option>
+                                    <option value="octal">Octal</option>
+                                    <option value="hexadecimal" >Hexadecimal</option>
+                                </select> 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="x" class="col-sm-2 control-label">X</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="x" id="id_x" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="y" class="col-sm-2 control-label">Y</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="y" id="id_y" placeholder="">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-info btn-default btn-block">Sumar</button>
+                        <button type="button" class="btn btn-warning btn-default btn-block">Restar</button>
+                        <button type="button" class="btn btn-success btn-default btn-block">Multiplicar</button>
+                        <button type="button" class="btn btn-primary btn-default btn-block">División</button>
+                    </form>
+                </div>
+                <div class="col-lg-7">
+                    <div class="well"></div>
                 </div>
             </div>
 
         </div>
-        <!-- Add your site or application content here -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <!--Script necesario para funcionamiento del app-->
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+        <!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>-->
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.mask.min.js"></script>
+        <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
+<!--        <script>
             (function(b, o, i, l, e, r) {
                 b.GoogleAnalyticsObject = l;
                 b[l] || (b[l] =
@@ -58,6 +93,6 @@
             }(window, document, 'script', 'ga'));
             ga('create', 'UA-XXXXX-X');
             ga('send', 'pageview');
-        </script>
+        </script>-->
     </body>
 </html>
