@@ -46,7 +46,8 @@ function suma($a, $b) {
 function resta($a, $b) {
     $a = str_split($a);
     $b = str_split($b);
-    var_dump($a, $b);
+    $b = completemdo2($b);
+    imprimir(recorrer($a, $b));
 }
 
 function multiplicacion($a, $b) {
@@ -114,3 +115,25 @@ function imprimir($param) {
     }
     echo $cadresulatado . '</p>';
 }
+
+function completemdo2($param) {
+    $resulta = array();
+//    $param = str_split($param);
+    $resultb = fila(count($param) - 1, count($param), '1');
+    foreach ($param as $key => $value) {
+        if ($value == '0')
+            $resulta[$key] = str_replace('0', '1', $value);
+        else
+            $resulta[$key] = str_replace('1', '0', $value);
+    }
+//    var_dump($resulta);
+    $resultadocomplemento2 = recorrer($resulta, $resultb);
+    $resultadocomplemento2 = $resultadocomplemento2[count($resultadocomplemento2) - 1];
+    $resultadocomplemento2 = $resultadocomplemento2[count($resultadocomplemento2) - 1];
+//    var_dump($resultadocomplemento2);
+//    $resulta = decbin(bindec($resulta) + bindec('1'));
+    array_shift($resultadocomplemento2);
+    return $resultadocomplemento2;
+}
+
+//var_dump('111101', completemdo2('111101'));

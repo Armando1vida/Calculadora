@@ -1,10 +1,4 @@
 $(function() {
-//     function() { 
-
-//    $("html").niceScroll();
-
-//  }
-//    $('#resultado').niceScroll();
     $('input#id_x').mask('ZZZZZZZZZZ', {
         translation: {
             'Z': {pattern: /[0-1]/},
@@ -14,6 +8,8 @@ $(function() {
             'Z': {pattern: /[0-1]/},
         }});
     $('#tipo_ope').change(function() {
+        $('input#id_x').val('');
+        $('input#id_y').val('');
         if ($(this).val() == 'binario') {
             $('input#id_x').mask('ZZZZZZZZZZ', {
                 translation: {
@@ -25,7 +21,6 @@ $(function() {
                 }});
         }
         else if ($(this).val() == 'octal') {
-            console.log($(this).val());
             $('input#id_x').mask('ZZZZZZZZZZ', {
                 translation: {
                     'Z': {pattern: /[0-7]/},
