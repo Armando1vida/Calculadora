@@ -1,4 +1,10 @@
 $(function() {
+//     function() { 
+
+//    $("html").niceScroll();
+
+//  }
+//    $('#resultado').niceScroll();
     $('input#id_x').mask('ZZZZZZZZZZ', {
         translation: {
             'Z': {pattern: /[0-1]/},
@@ -17,7 +23,6 @@ $(function() {
                 translation: {
                     'Z': {pattern: /[0-1]/},
                 }});
-
         }
         else if ($(this).val() == 'octal') {
             console.log($(this).val());
@@ -29,7 +34,6 @@ $(function() {
                 translation: {
                     'Z': {pattern: /[0-7]/},
                 }});
-
         }
         else if ($(this).val() == 'hexadecimal') {
             $('input#id_x').mask('ZZZZZZZZZZ', {
@@ -40,22 +44,55 @@ $(function() {
                 translation: {
                     'Z': {pattern: /[A-F0-9]/},
                 }});
-
         }
     });
 });
-
-
-function maskAttributes() {
-    $('input.telefono').mask('000-000000');
-    $('input.celular').mask('0000000000');
-    $('input.ID').mask('0000000000');
-    $('input.fax').mask('000-000000');
-    $('input.numeric').mask('00000000000');
-    $('input.money').mask('P999999999999999999999.ZZ', {
-        translation: {
-            'Z': {pattern: /[0-9]/, optional: true},
-            'P': {pattern: /[1-9]/, },
-        }});
-    //continuar cargando formatos para input
+function sumar() {
+    $('#tipo_operacion').val('sumar');
+    if (preparar($('#id_x').val(), $('#id_y').val())) {
+        enviar($('#tipo_ope').val());
+    }
 }
+function restar() {
+    $('#tipo_operacion').val('restar');
+    if (preparar($('#id_x').val(), $('#id_y').val())) {
+        enviar($('#tipo_ope').val());
+    }
+}
+function multiplicar() {
+    $('#tipo_operacion').val('multiplicar');
+    if (preparar($('#id_x').val(), $('#id_y').val())) {
+        enviar($('#tipo_ope').val());
+    }
+}
+function dividir() {
+    $('#tipo_operacion').val('dividir');
+    if (preparar($('#id_x').val(), $('#id_y').val())) {
+        enviar($('#tipo_ope').val());
+    }
+}
+
+function enviar(tipo) {
+    $.ajax({
+        url: 'page/' + tipo + '.php',
+        type: 'POST',
+        datatype: 'json',
+        async: true,
+        data: $('#form').serialize(),
+        success: function(data) {
+            $('div#resultado').html(data);
+        },
+        error: function(data) {
+            $('div#resultado').html('error');
+        }
+    });
+}
+function preparar($x, $y) {
+    if ($x.length == $y.length && $x != '' && $y != '') {
+        return true;
+    } else {
+        bootbox.alert('Los operando tiene que tener la misma longitud o no pueden estar vacios');
+        return false;
+    }
+}
+

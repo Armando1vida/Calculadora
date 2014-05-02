@@ -32,7 +32,7 @@
             </div>
             <div class="row">                
                 <div class="col-md-5">
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" id="form" role="form">
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Sistema</label>
                             <div class="col-sm-10">
@@ -55,14 +55,19 @@
                                 <input type="text" class="form-control" name="y" id="id_y" placeholder="">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-info btn-default btn-block">Sumar</button>
-                        <button type="button" class="btn btn-warning btn-default btn-block">Restar</button>
-                        <button type="button" class="btn btn-success btn-default btn-block">Multiplicar</button>
-                        <button type="button" class="btn btn-primary btn-default btn-block">División</button>
+                        <input type="hidden" name="operacion" id="tipo_operacion">
+                        <button type="button" onclick="sumar()" class="btn btn-info btn-default btn-block">Sumar</button>
+                        <button type="button" onclick="restar()"  class="btn btn-warning btn-default btn-block">Restar</button>
+                        <button type="button" onclick="multiplicar()"  class="btn btn-success btn-default btn-block">Multiplicar</button>
+                        <button type="button" onclick="dividir()"  class="btn btn-primary btn-default btn-block">Dividir</button>
                     </form>
                 </div>
-                <div class="col-lg-7">
-                    <div class="well"></div>
+                <div   class="col-lg-7">
+                    <div class="well">
+                        <div id="resultado">
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -75,6 +80,8 @@
         <script src="js/plugins.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.mask.min.js"></script>
+        <script src="js/bootbox.min.js"></script>
+        <script src="js/vendor/jquery.nicescroll.min.js"></script>
         <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
