@@ -44,18 +44,21 @@ $(function() {
 });
 function sumar() {
     $('#tipo_operacion').val('sumar');
+    formato($('#id_x'), $('#id_y'));
     if (preparar($('#id_x').val(), $('#id_y').val())) {
         enviar($('#tipo_ope').val());
     }
 }
 function restar() {
     $('#tipo_operacion').val('restar');
+    formato($('#id_x'), $('#id_y'));
     if (preparar($('#id_x').val(), $('#id_y').val())) {
         enviar($('#tipo_ope').val());
     }
 }
 function multiplicar() {
     $('#tipo_operacion').val('multiplicar');
+    formato($('#id_x'), $('#id_y'));
     if (preparar($('#id_x').val(), $('#id_y').val())) {
         enviar($('#tipo_ope').val());
     }
@@ -63,6 +66,7 @@ function multiplicar() {
 function dividir() {
     $('#tipo_operacion').val('dividir');
     $base = base($('#tipo_ope').val());
+    formato($('#id_x'), $('#id_y'));
     if (preparar($('#id_x').val(), $('#id_y').val()) && checkdivision($('#id_x').val(), $('#id_y').val(), $base)) {
         enviar($('#tipo_ope').val());
     }
@@ -84,20 +88,25 @@ function enviar(tipo) {
     });
 }
 function preparar($x, $y) {
-    if ($x.length == $y.length && $x != '' && $y != '') {
+    if ($x != '' && $y != '') {
         return true;
     } else {
-        bootbox.alert('Los operando tiene que tener la misma longitud o no pueden estar vacios');
+        bootbox.alert('Los operando no pueden estar vacios');
         return false;
     }
 }
 function checkdivision($x, $y, $base) {
     var digit1 = parseInt($x, $base);
     var digit2 = parseInt($y, $base);
-    if ((digit1 > digit2 || digit1 == digit2) && digit2 != 0) {
-        return true;
+    if (digit2 != 0) {
+        if ((digit1 > digit2 || digit1 == digit2)) {
+            return true;
+        } else {
+            bootbox.alert('El divisor no puede ser mayor que el dividendo');
+            return false;
+        }
     } else {
-        bootbox.alert('El dividendo no puede ser mayor que el divisor o no puede ser cero');
+        bootbox.alert('El divisor no debe ser cero');
         return false;
     }
 }
@@ -109,4 +118,31 @@ function base($val) {
     else if ($val == 'hexadecimal')
         return 16;
 }
+function formato($val1, $val2) {
+    $max = 0;
+    if ($val1.val().length != $val2.val().length) {
+        $max = $val1.val().length > $val2.val().length ? $val1.val().length : $val2.val().length;
+        if ($val1.val().length > $val2.val().length) {
+            $cadeda = generar_cadena('0', $max - $val2.val().length);
+            $val = $val2.val();
+            $val2.val($cadeda + $val);
+        }
+        else {
+            $cadeda = generar_cadena('0', $max - $val1.val().length);
+            $val = $val1.val();
+            $val1.val($cadeda + $val);
 
+        }
+    }
+    else {
+        $max = $val1.length;
+    }
+}
+function generar_cadena($caracter, lon) {
+    code = "";
+    for (x = 0; x < lon; x++)
+    {
+        code += $caracter;
+    }
+    return code;
+}
