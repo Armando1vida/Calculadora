@@ -62,7 +62,8 @@ function multiplicar() {
 }
 function dividir() {
     $('#tipo_operacion').val('dividir');
-    if (preparar($('#id_x').val(), $('#id_y').val())) {
+    $base = base($('#tipo_ope').val());
+    if (preparar($('#id_x').val(), $('#id_y').val()) && checkdivision($('#id_x').val(), $('#id_y').val(), $base)) {
         enviar($('#tipo_ope').val());
     }
 }
@@ -89,5 +90,23 @@ function preparar($x, $y) {
         bootbox.alert('Los operando tiene que tener la misma longitud o no pueden estar vacios');
         return false;
     }
+}
+function checkdivision($x, $y, $base) {
+    var digit1 = parseInt($x, $base);
+    var digit2 = parseInt($y, $base);
+    if ((digit1 > digit2 || digit1 == digit2) && digit2 != 0) {
+        return true;
+    } else {
+        bootbox.alert('El dividendo no puede ser mayor que el divisor o no puede ser cero');
+        return false;
+    }
+}
+function base($val) {
+    if ($val == 'binario')
+        return 2;
+    else if ($val == 'octal')
+        return 8;
+    else if ($val == 'hexadecimal')
+        return 16;
 }
 
