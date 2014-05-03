@@ -39,7 +39,6 @@ function preparar($post = null) {
 function suma($a, $b) {
     $a = str_split($a);
     $b = str_split($b);
-//    recorrer($a, $b);
     imprimir(recorrer($a, $b));
 }
 
@@ -105,20 +104,30 @@ function recorrer($array1, $array2) {
 }
 
 function imprimir($param) {
-    $cadresulatado = '<p class="text-center">';
+    $cadresulatado = '';
+    $cadresulatado .= '<h4>Resolución:</h4>';
+
+    $paso = 1;
     foreach ($param as $value) {
+        $cadresulatado .= '<div class="col-md-3">';
+        $cadresulatado .= "<em class='text-left'>Paso $paso</em>";
+        $cadresulatado .= '<p class="text-center">';
+
         foreach ($value as $val) {
             $cadresulatado.= implode("", $val);
             $cadresulatado.= '<br>';
         }
-        $cadresulatado.= '------<br>';
+        $paso++;
+        $cadresulatado .= '</p">';
+        $cadresulatado .= '</div>';
+
+//        $cadresulatado.= '------<br>';
     }
-    echo $cadresulatado . '</p>';
+    echo $cadresulatado;
 }
 
 function completemdo2($param) {
     $resulta = array();
-//    $param = str_split($param);
     $resultb = fila(count($param) - 1, count($param), '1');
     foreach ($param as $key => $value) {
         if ($value == '0')
@@ -126,14 +135,9 @@ function completemdo2($param) {
         else
             $resulta[$key] = str_replace('1', '0', $value);
     }
-//    var_dump($resulta);
     $resultadocomplemento2 = recorrer($resulta, $resultb);
     $resultadocomplemento2 = $resultadocomplemento2[count($resultadocomplemento2) - 1];
     $resultadocomplemento2 = $resultadocomplemento2[count($resultadocomplemento2) - 1];
-//    var_dump($resultadocomplemento2);
-//    $resulta = decbin(bindec($resulta) + bindec('1'));
     array_shift($resultadocomplemento2);
     return $resultadocomplemento2;
 }
-
-//var_dump('111101', completemdo2('111101'));

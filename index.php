@@ -13,7 +13,7 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
+        <!--<link rel="stylesheet" href="css/normalize.css">-->
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/bootstrap.css">
     </head>
@@ -56,23 +56,32 @@
                             </div>
                         </div>
                         <input type="hidden" name="operacion" id="tipo_operacion">
-                        <button type="button" onclick="sumar()" class="btn btn-info btn-default btn-block">Sumar</button>
-                        <button type="button" onclick="restar()"  class="btn btn-warning btn-default btn-block">Restar</button>
-                        <button type="button" onclick="multiplicar()"  class="btn btn-success btn-default btn-block">Multiplicar</button>
-                        <button type="button" onclick="dividir()"  class="btn btn-primary btn-default btn-block">Dividir</button>
+                        <button type="button" onclick="sumar()" class="btn btn-info btn-default btn-block"> <span class=" glyphicon glyphicon-plus"></span> <strong>Sumar</strong></button>
+                        <button type="button" onclick="restar()"  class="btn btn-warning btn-default btn-block"><span class="glyphicon glyphicon-minus"></span> <strong>Restar</strong></button>
+                        <button type="button" onclick="multiplicar()"  class="btn btn-success btn-default btn-block"><span class="glyphicon glyphicon-remove"></span> <strong>Multiplicar</strong></button>
+                        <button type="button" onclick="dividir()"  class="btn btn-primary btn-default btn-block"><span class="glyphicon glyphicon-italic"></span> <strong>Dividir</strong></button>
                     </form>
                 </div>
-                <div   class="col-lg-7">
-                    <div class="well">
-                        <div id="resultado">
-
+                <div class="col-md-7">
+                    <div id="resultado"  class="row well">
+                        <div class="col-md-12 jumbotron">
+                            <h3 class="text-center text-info">UNIVERSIDAD TECNICA DEL NORTE</h3>
+                            <h4 class="text-center text-danger">FICA</h4>
+                            <h5 class="text-center text-muted">INGENIERIA EN SISTEMAS COMPUTACIONALES</h5>
+                            <br>
+                            <br>
+                            <dl class="dl-horizontal">
+                                <dt>INTEGRANTES:</dt>
+                                <dd >Armando Maldonado Conejo</dd>
+                                <dd >Rubén Tirira</dd>
+                            </dl>
+                            <h6 class='text-center'>2014 </h6>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
-
         <!--Script necesario para funcionamiento del app-->
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
         <!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>-->
